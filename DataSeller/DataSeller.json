@@ -1,0 +1,26 @@
+[
+    {
+        "firstname": "new",
+        "lastname": "user",
+        "address": "asdasd",
+        "email": "new@gmail.com",
+        "Seller_name": "bhondo",
+        "Seller_pass": "123456789"
+    },
+    {
+        "firstname": "angela",
+        "lastname": "sarkar",
+        "address": "luxmibazar",
+        "email": "a@gmail.com",
+        "Seller_name": "angela",
+        "Seller_pass": "123456789"
+    },
+    {
+        "firstname": "a123",
+        "lastname": "saasasasas",
+        "address": "sasasasas",
+        "email": "a@gmail.com",
+        "Seller_name": "angela",
+        "Seller_pass": "Akmch067**1"
+    }
+]
