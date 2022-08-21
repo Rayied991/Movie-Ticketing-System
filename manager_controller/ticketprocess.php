@@ -1,23 +1,7 @@
 <?php
-
-session_start ();
-if (isset($_SESSION['username']))
-{
-   echo "Your session is running <br>" .$_SESSION['username'];
-   echo "<br>";
-
-
-}
-$cookie_name="us";
-$cookie_value="Dear Elite Customer";
-setcookie($cookie_name, $cookie_value,time() + 86400, "/");
-
-if(isset($_COOKIE[$cookie_name])) {
-    echo "Welcome again <br>"; 
-  }
-  else {  
-    echo "<br/>Welcome to this page for the 1st time " . $cookie_name;  
-}  
+include("../manager_controller/reg.php");
+include("../manager_controller/cookie.php");  
+// include("../manager_controller/sessioncheck.php");  
 
 $invalid_customer_name="";
 $valid_customer_name="";
@@ -30,24 +14,19 @@ $invalid_clock ="";
 $valid_clock="";
 
 
-if($_SERVER["REQUEST_METHOD"] =="POST")
+if(isset($_REQUEST["submit"])){
+   
 {
-$customer_name = $_POST["Customers_nam"];
-// $hall = $_POST["hall"];
-// $clock = $_POST["clock"];
-// $movie =$_POST["movie"];
 
-$comment = $_POST["comment"];
-
-if(empty($customer_name)  || is_numeric($customer_name))
+if(empty($_POST["customer_name"])  || is_numeric($_POST["customer_name"]))
 {
     $invalid_customer_name="Enter customers Name";
 }
 else
 {
-    $valid_customer_name= $customer_name;
+    $valid_customer_name= $_POST["customer_name"];
     //$validfname = $Seller_fname;
-    echo "Customers Name : " . $customer_name;
+    echo "Customers Name : " .$valid_customer_name;
 }
 echo"<br>";
 
@@ -92,9 +71,6 @@ else
 $invalid_hall= "<br>select radio a Button.";
 }
 
-echo"Seat No : ";
-echo(rand(1,30));
-echo"<br>";
 
 
 
@@ -102,10 +78,12 @@ echo"<br>";
 
 
 
-echo"<br>";
-//echo "Your Comment : " . $comment;
 
 
 
+
+
+
+}
 }
 ?>

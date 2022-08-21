@@ -9,12 +9,12 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tickets</title>
+    <link rel="stylesheet" href="../sellerCSS/Ticket.css">
 </head>
 <body>
-    <h1>Ticket</h1>
-    <fieldset>
-        <fieldset>
-
+    <h1 class="ticket">Ticket</h1>
+   
+<div class="tic">
 <?php
 echo "Ticket Name : " . $_SESSION["Customers_nam"];
 echo"<br>";
@@ -29,9 +29,8 @@ echo"<br>";
 echo"Hall :" . $_SESSION["hall"];
 echo"<br>";
 ?>
-</fieldset>
-</fieldset>
 
+</div>
 
 
 
@@ -41,7 +40,7 @@ echo"<br>";
 
 
     <a href="../Seller_View/Seller.php">
-    <input type="button" name="OK" value="OK">
+    <input type="button" name="OK" value="OK" id="submit">
 </a>
 </body>
 </html>

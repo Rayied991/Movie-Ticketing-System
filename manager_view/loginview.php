@@ -1,37 +1,72 @@
-<?php 
-include ("../manager_controller/login.php");
- ?>
+<?php
+
+include("../manager_controller/login.php");
+
+
+if(isset($_SESSION["manager_name"]))
+{
+    header("location:../manager_view/homepageview.php");
+}
+
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login For Manager</title>
+    <link rel="stylesheet" href="../managercss/style.css">
+
+</head>
 
 <html>
+    <title>Manager Login </title>
     <body>
+    <div class="header">
+        <h1 align="center">Manager Login Form</h1>
+        </div>
 
-        <h1 align = "center">Movie Ticket Booking System</h1>
-        <h2 align = "center"> ..Welcome..</h2>
-
-        <h3>Manager login Form</h3>
-        
-        <form action="" method="post" enctype = "multipart/form-data"  >
+        <form action=""method="POST"  enctype="multipart/form-data">
+            <fieldset>
+                <legend>Login Details:</legend>
             <table>
-            <tr>
-            <td>User Name :</td>
-            <td><input type="User Name" name="username"> <?php echo $validateusername; ?></td>
-            </tr>
+                <tr>
+                    <td>Manager name</td>
+                    <td><input type="text" name="manager_name" placeholder="Enter your managername" value="<?php if(isset($_COOKIE["manager_name"])) { echo $_COOKIE["manager_name"]; } ?>">
+                    
+</td>
+</tr>
+<tr>
+                    <td>Password</td>
+                    <td><input type="password" name="manager_pass" placeholder="Enter your Password" value="<?php if(isset($_COOKIE["manager_pass"])) { echo $_COOKIE["manager_pass"]; } ?>">
+                </td>
+                  
+                   
+                   
+                    
+</tr>
+<tr>
+<td> <input type="checkbox" name="Remember_me">Remember me</td>
+</tr>
+
+
+                <tr>
+                    <td>
+                        <a href="homepageview.php">Login</a>
+                    </td>
+                <tr>
+                    <td>
+                        <a href="forgotpassview.php">Forget Password</a>
+                    </td>
+                </tr>
+                <tr>
+                </tr>
+            </table>
             
-            
-            <tr>
-            <td>Password :</td>
-            <td><input type="password" name="pass"><?php echo $validationpass; ?></td>
-            </tr>
-            <tr>
-            <td>
-            <input type="reset" value="Reset"> 
-            <input type="submit" value="Submit">
-            </td>
-            </tr>
-
-</table> 
-<h4>Forgotten your password?<a href="forgotpassview.php">Reset Password</a></h4>
-
-
-</body>
+        </form>
+        </fieldset>
+        <h4>Don't Have an Account, <a href="regview.php"> Register here</a></h4>
+    </body>
 </html>

@@ -1,6 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../CSS/Home.css">
+</head>
+<body>
+    
+</body>
+</html>
+
 <?php
-// session_start();
-session_start();
+
+//session_start();
 if(isset($_SESSION['seller_name'])) {
 echo "Your session is running  " . $_SESSION['seller_name'];
 echo"<br>";
@@ -10,9 +24,9 @@ $value="Seller";
 setcookie("myCookie", $value);
 
 if(isset($_COOKIE["myCookie"])) {
-    echo "Welcome";
+    echo "<h3 class='wel'>Welcome</h3>";
   }else {  
-    echo "<br/>Welcome to this page for the 1st time ";  
+    echo "<h3 class='wel'>Welcome to this page for the 1st time </h3>";  
 }  
 
 $invalid_customer_name="";

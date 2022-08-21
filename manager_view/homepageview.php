@@ -10,20 +10,25 @@ include("../manager_controller/ticketprocess.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seller Board</title>
+    
+
 </head>
+
 <body>
+
 <form action="" method="POST">
+
     <fieldset>
         <fieldset>
             <h2 align="center">Star Cineplex</h2>
             <h4 align="center">Grab The Tickets For Entertainment</h4>
+
+        
         </fieldset>
         <fieldset>
-    <p><a href="#">Top Movies</a>
-     | <a href="#">Book ticket</a>
-     |<a href="https://www.facebook.com/rubaba.rahman.319/">Contact with manager</a>
-    | <a href="../user_view/about us.php">About us</a>
-    |<a href="../manager_view/loginview.php">Manager Update & view </a>
+    <p><a href="#">Book Ticket</a>
+     | <a href="https://www.facebook.com/rubaba.rahman.319/">Contact with manager</a>
+     |<a href="../manager_view/updateview.php">Update Hall</a>
     | <a href="../manager_view/loginview.php">Logout</a>
     
  </p>

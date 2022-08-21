@@ -1,89 +1,119 @@
 <?php
-include ("reg.php");
-
-$validateusername="";
-$validationpass="";
-
-
-$username=$pass=$checkbox="";
+include("../Model/db.php");
 session_start();
 
-$_SESSION['username'] = 'Dear Manager';
+$validmanager="";
+$invalidmanager="";
+$validpass="";
+$invalidpass="";
 
+ 
+   
 
-if($_SERVER["REQUEST_METHOD"]=="POST")
-{
+if(isset($_REQUEST["Submission"])){
+    $manager_name=$_REQUEST["manager_name"];
+    $password=$_REQUEST["manager_pass"];
 
-    $username=$_REQUEST["username"];
-    $password=$_REQUEST["pass"];
-
+   
 
     
-    
-$username=$_REQUEST["username"];
-if(empty($_REQUEST["username"]) || (strlen($_REQUEST["username"])<3))
-{
-    $validateusername="*you must enter your username";
-}
-else 
-{
-    $validateusername= "your username is ".$username;
-}
-$password=$_REQUEST["pass"];
-if((strlen($_REQUEST["pass"])<8))
-{
-    $validationpass= "*you must enter your password";
 
+
+  
+
+
+   
+
+   if(empty($_REQUEST["manager_name"])|| empty($_REQUEST["manager_pass"])){
+    echo "Manager name and Password cannot be empty";
+
+   }
+   else{
+    //remember me
+ if(isset($_REQUEST["Remember_me"])){
+    setcookie("manager_name",$_REQUEST["manager_name"],time()+86400);
+    setcookie("manager_pass",$_REQUEST["manager_pass"],time()+86400);
+   
 }
+else{
+    setcookie("manager_name","",time()-86400);
+    setcookie("manager_pass","",time()-86400);
+}
+    
+    $mydb=new db();
+    $conobj=$mydb->opencon();
+    $results=$mydb->checklogin($conobj,"manager_registration",$manager_name,$password);
+    if($results->num_rows>0){
+        $_SESSION["manager_name"]=$_REQUEST["manager_name"];
+        $_SESSION["manager_pass"]=$_REQUEST["manager_pass"];
+
+    }
+    else{
+        echo "Manager not found<br>";
+    }
+   }
+  
+
+    // if(empty($admin_name)){
+    //     $invalid_adminname="Please Enter your Admin name";
+    // }
+    // else{
+    //     $valid_adminname=$admin_name;
+    // }
+
+    // if(empty($password)){
+    //     $invalid_password="Please Enter your Password";
+    // }
+    // else if(!empty($password) && strlen($password)<8){
+        
+    //     $invalid_password="Password must Contains at least 8 characters";
+    //         echo "<br>";
+        
+            
+    //     }
+    // else{
+    //     $validpass=$password;
+          
+            
+          
+    // }
+
+
 
 //login using json
-$login_data=file_get_contents("../manager_data/managerdata.json");
-$fetch_login_data=json_decode($login_data);
+// $login_data=file_get_contents("../Admin_Data/admin_data.json");
+// $login=json_decode($login_data);
 
-foreach($fetch_login_data as $login_data)
-        {
-            if($login_data->username==$validateusername && $login_data->password==$validatepassword )
-            {
-                header("location:../manager_view/homepageview.php");
-            }
-            else
-            {
-                if(empty($username))
-                {
-                    $validateusername= "*you must enter username";
-                }
-               else
-               {
-                $validateusername= "";
-               }
-            }
+// foreach($login as $login_data){
+   
+//         if($login_data->Admin_Name==$valid_adminname && $login_data->Password==$validpass){
+            
+          
+           
+//             $_SESSION['admin_name'] = $valid_adminname;
+//             $_SESSION['admin_pass'] = $validpass;
+//             header("Location:../Admin_View/Admin_HomePage.php");
+//         } 
+//         else{
+//             if(empty($admin_name))
+//             {
+//                 $invalid_adminname= "You must enter Admin Name";
+//             }
+//            else
+//            {
+//             $invalid_adminname= "Invalid Admin Name or password";
+//            }
+        
+//         } 
+// }
+
+
+
+
+
         }
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+   
 
 
 

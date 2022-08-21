@@ -1,4 +1,5 @@
 <?php
+include("../sellerModel/db.php");
 
 $invalidfname="";
 $invalidlname="";
@@ -28,15 +29,16 @@ $valid_ConSellerpass="";
 
 
 $x=0;
-if(isset($_POST['submit']))
+if(isset($_POST['sub']))
 {
 if($_SERVER["REQUEST_METHOD"] =="POST")
 {
     $Seller_fname = $_POST["fname"];
     $Seller_lname = $_POST["lname"];
-    // $Gender = $_POST["gender"];
+    //$Gender = $_POST["gender"];
     $address = $_POST["address"];
     $email = $_POST["email"];
+    $file = "";
     $Seller_name =$_POST["Seller_name"];
     $Seller_pass =$_POST["Seller_pass"];
     $Seller_ConSellerpass =$_POST["Confirm_seller_pass"];
@@ -71,7 +73,7 @@ if(isset($_POST["gender"]))
 {
     
     $valid_gender= $_POST["gender"];
-    
+    $x++;
    
 }
 else
@@ -120,7 +122,7 @@ if(empty($Seller_pass))
     }
     else if (!empty($Seller_pass) && (strlen($Seller_pass) < 8))
     {
-        $invalid_Sellerpass = "**Please enter password more than 8 characters";
+        $invalid_Sellerpass = "**Please enter password  atleast 8 characters";
     }
     else
     {
@@ -140,37 +142,33 @@ if(empty($Seller_pass))
             $invalid_ConSellerpass="**Password not Matched Try Again";
 
      }
-     if($x==7)
-     {
-     $formdata = array(
-        'firstname' => $validfname,
-        'lastname' => $validlname,
-        'address' => $valid_address,
-        'email' => $valid_email,
-        'Seller_name' => $valid_Sellername,
-        'Seller_pass' => $valid_Sellerpass,
-     
-    );
-    $existingdata = file_get_contents("../DataSeller/DataSeller.json");
-    $tempJSONdata = json_decode($existingdata);
-    $tempJSONdata[] =$formdata;
-    //Convert updated array to JSON
-    $jsondata = json_encode($tempJSONdata, JSON_PRETTY_PRINT);
-    
-    //write json data into data.json file
-    if(file_put_contents("../DataSeller/DataSeller.json", $jsondata)) {
-         echo "Registration has been Successful <br>";
-         header("location:../Seller_View/Seller_Login.php");
-     }
-    else {
-         echo "Not Registered";
-    }
-}
-     
-//   $data = file_get_contents("../DataSeller/DataSeller.json");
-//   $mydata = json_decode($data);
 
-//   echo "my value: ".$mydata[1]->lastname;
+
+ $file = $_FILES["myfile"]["name"];
+if(move_uploaded_file($_FILES["myfile"]["tmp_name"],"../uploads/" . $_FILES["myfile"]["name"]))
+{
+    echo"File uploaded <br>";
+    echo $_FILES["myfile"]["name"];
+    //session add
+    $x++;
+}
+else
+{
+   // echo"File not uploaded";
+}
+
+if($x==9)
+{
+
+
+$mydb=new db();
+$myconn=$mydb->opencon();
+
+
+$mydb->insertuser($Seller_fname,$Seller_lname,$_POST["gender"],$address,$email,$file,$Seller_name,$Seller_pass,$Seller_ConSellerpass,"seller_reg",$myconn);
+
+
+}
  
 
     
