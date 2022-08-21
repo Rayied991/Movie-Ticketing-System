@@ -1,5 +1,7 @@
 <?php
 
+include ("../user_model/db.php");
+
 $invalid_fname="";
 $invalid_lname="";
 $invalid_gender="";
@@ -32,15 +34,14 @@ if(isset($_POST['submit']))
 {
     $fname=$_REQUEST['f_name'];
     $lname=$_REQUEST['l_name'];
-    $dob=$_REQUEST['dob'];
+    $gender=$_POST['gender'];
 
     $mobile=$_REQUEST['mobile'];
     $email=$_REQUEST['email'];
     $address=$_REQUEST['address'];
 
-    $set_user=$_REQUEST['set_user'];
     $set_pass=$_REQUEST['set_pass'];
-    $confirm_pass=$_REQUEST['confirm_pass'];
+    // $confirm_pass=$_REQUEST['confirm_pass'];
 
     if(empty($fname))
     {
@@ -70,24 +71,26 @@ if(isset($_POST['submit']))
         $x++;
     }
     //gender
-    if(isset($_REQUEST['gender']))
+    if(isset($_POST["gender"]))
     {
-        $valid_gender=$_REQUEST['gender'];
+    
+        $valid_gender= $_POST["gender"];
         $x++;
     }
-    else{
-        $invalid_gender="*you must enter your gender";
+    
+    //if gender not selected
+
+    else if(empty($_POST['gender']))
+    {
+       echo "<br>";
     }
 
-    if($dob)
-    {
-        $valid_dob=$dob;
-        $x++;
-    }
     else
     {
-        $invalid_dob="*you must enter your date of birth";
+    
+        $invalidgender = "**Please select a Gender";
     }
+
 
     if(empty($mobile))
     {
@@ -126,15 +129,6 @@ if(isset($_POST['submit']))
         $invalid_address="*you must enter your address";
     }
 
-    if(empty($set_user))
-    {
-        $invalid_set_user="*you must enter username";
-    }
-    else
-    {
-        $valid_set_user=$set_user;
-        $x++;
-    }
 
     if(empty($set_pass))
     {
@@ -151,64 +145,76 @@ if(isset($_POST['submit']))
     }
   
 
-    if($confirm_pass)
-    {
-        $valid_con_pass=$confirm_pass;
-        $x++;
-    }
-    else
-    {
-        $invalid_con_pass="*you must enter your confirm password";
-    }
+    // if($confirm_pass)
+    // {
+    //     $valid_con_pass=$confirm_pass;
+    //     $x++;
+    // }
+    // else
+    // {
+    //     $invalid_con_pass="*you must enter your confirm password";
+    // }
 
-    if($valid_set_pass==$valid_con_pass)
-    {
-        $valid_con_pass=$valid_con_pass;
-        $x++;
-    }
-    else
-    {
-        $invalid_con_pass="*password and confirm password must be same";
-    }
+    // if($valid_set_pass==$valid_con_pass)
+    // {
+    //     $valid_con_pass=$valid_con_pass;
+    //     $x++;
+    // }
+    // else
+    // {
+    //     $invalid_con_pass="*password and confirm password must be same";
+    // }
 
 
-    if($x==11)   ///checking all the data given 
-    {
-///data to store in json
-    $user_data=array(
-        "fname"=>$valid_fname,
-        "lname"=>$valid_lname,
-        "dob"=>$valid_dob,
-        "mobile"=>$valid_mobile,
-        "email"=>$valid_email,
-        "address"=>$valid_address,
-        "set_user"=>$valid_set_user,
-        "set_pass"=>$valid_set_pass,
-    );
+//     if($x==11)   ///checking all the data given 
+//     {
+// ///data to store in json
+//     $user_data=array(
+//         "fname"=>$valid_fname,
+//         "lname"=>$valid_lname,
+//         "dob"=>$valid_dob,
+//         "mobile"=>$valid_mobile,
+//         "email"=>$valid_email,
+//         "address"=>$valid_address,
+//         "set_user"=>$valid_set_user,
+//         "set_pass"=>$valid_set_pass,
+//     );
  
-    $remaining_data=file_get_contents("../user_data/reg_user_data.json");
-    $fetch_data=json_decode($remaining_data);
-    $fetch_data[]=$user_data;
+//     $remaining_data=file_get_contents("../user_data/reg_user_data.json");
+//     $fetch_data=json_decode($remaining_data);
+//     $fetch_data[]=$user_data;
 
-    $dump_json=json_encode($fetch_data, JSON_PRETTY_PRINT);
+//     $dump_json=json_encode($fetch_data, JSON_PRETTY_PRINT);
     
-    if(file_put_contents("../user_data/reg_user_data.json",$dump_json))
-    {
-       echo "<br> Registration Successful !!!!<br>";
-         header("location:../user_view/user_login.php");
-    }
-    else
-    {
-        echo "Not registered";
-    }
+//     if(file_put_contents("../user_data/reg_user_data.json",$dump_json))
+//     {
+//     //    echo "<br> Registration Successful !!!!<br>";
+//          header("location:../user_view/user_login.php");
+//     }
+//     else
+//     {
+//         // echo "Not registered";
+//     }
 
-    }
-     echo "<br> Registration Failed !!!! Please give all the informations<br>";
+//     }
+    //  echo "<br> Registration Failed !!!! Please give all the informations<br>";
     
  }
+
+ if($x==7)
+ {
+    $mydb=new db();
+    $myconn=$mydb->opencon();
+    
+    $mydb->insertuserreg($fname,$lname,$gender,$mobile,$email,$address,$set_pass,"reg",$myconn);
+ }
+ else
+ {
+    echo "Registration Failed !!!! Please give all the informations";
+ }
+
+
 }
 
     
-
-
 ?>

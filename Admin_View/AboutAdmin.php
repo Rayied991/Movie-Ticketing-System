@@ -2,10 +2,12 @@
 <html>
     <title>Admin Info</title>
     <head>
-        <link rel="stylesheet" href="../Admin_CSS/Aboutadmin.css">
+        <link rel="stylesheet" href="../Admin_CSS/admin.css">
     </head>
     <body>
+        <div class="header">
     <h1>Admin Informations</h1>
+</div>
         <form action="" method="POST">
        
    <table border="2">

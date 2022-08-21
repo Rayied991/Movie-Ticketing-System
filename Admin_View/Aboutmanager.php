@@ -1,11 +1,16 @@
-
+<?php
+include("../Admin_control/deletemanager.php");
+?>
 <html>
     <title>Manager Info</title>
     <head>
-        <link rel="stylesheet" href="../Admin_CSS/Aboutadmin.css">
+        <link rel="stylesheet" href="../Admin_CSS/manager.css">
     </head>
     <body>
-        <h1>Manager Informations</h1>
+        <div class="header">
+
+            <h1>Manager Informations</h1>
+        </div>
         <form action="" method="POST">
        
    <table border="2">
@@ -15,10 +20,8 @@
         <th>Last Name</th>
         <th>Age</th>
         <th>Gender</th>
-        <th>Mobile No</th>
         <th>Email</th>
         <th>Manager Name</th>
-        <th>Source</th>
     </tr>
     <?php
        $servername="localhost";
@@ -42,10 +45,8 @@ if($result->num_rows>0){
       </td><td>".$row["lname"]."
       </td><td>".$row["age"]."
       </td><td>".$row["gender"]."
-      </td><td>".$row["num"]."
       </td><td>".$row["email"]."
-      </td><td>".$row["username"]."
-      </td><td><a href='Aboutmanager.php'>Delete</a></td></tr>";
+      </td><td>".$row["username"]."</td></tr>";
      
     }
     echo "</table>";
@@ -65,8 +66,12 @@ else{
    
    
    </table>
-
+<br>
    <a href="../Admin_View/Managercrud.php">Add Manager</a>
+   <br><br>
+   <input type="email" name="delsearch">
+   <input type="submit" name="delbtn" Value="Delete" class="button b1">
+   <br><br><br><br>
    <a href="../Admin_View/Admin_Homepage.php">Go Back</a>
     
         

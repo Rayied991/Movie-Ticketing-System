@@ -3,7 +3,7 @@ function showHint(str) {
     document.getElementById("txtHint").innerHTML = "";
     return;
   } else {
-    const xmlhttp = new XMLHttpRequest();
+    var xmlhttp = new XMLHttpRequest();
     xmlhttp.onload = function() {
       document.getElementById("txtHint").innerHTML = this.responseText;
     }

@@ -5,11 +5,13 @@ include("../Admin_control/noticeupdate.php");
 
 <head>
     <title>Post Notice</title>
-    <!-- <link rel="stylesheet" href="../Admin_CSS/noticeboard.css"> -->
+    <link rel="stylesheet" href="../Admin_CSS/noticeboard.css">
 </head>
 
 <body>
+<div class="header">
     <h1>Notice Post Section</h1>
+</div>
     <div class="body">
         <form action="" method="post">
          
@@ -26,7 +28,7 @@ include("../Admin_control/noticeupdate.php");
                     <td>Date:</td>
                     <td><input type="date" name="noticedate"></td>
                     <br><br>
-                    <td><input type="submit" name="update" value="Update Notice"></td>
+                    <td><input type="submit" name="update" value="Update Notice" class="button button1"></td>
                    
                     
                 </tr>

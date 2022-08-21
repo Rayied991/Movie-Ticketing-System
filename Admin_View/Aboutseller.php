@@ -2,10 +2,12 @@
 <html>
     <title>Seller Info</title>
     <head>
-        <!-- <link rel="stylesheet" href="../Admin_CSS/.css"> -->
+        <link rel="stylesheet" href="../Admin_CSS/seller.css">
     </head>
     <body>
+        <div class="header">
     <h1>Seller Informations</h1>
+</div>
         <form action="" method="POST">
       
    <table border="2">
@@ -16,7 +18,6 @@
         <th>Address</th>
         <th>Email</th>
         <th>Seller Name</th>
-        <th>Source</th>
     </tr>
     <?php
        $servername="localhost";
@@ -41,8 +42,7 @@ if($result->num_rows>0){
       </td><td>".$row["Gender"]."
       </td><td>".$row["address"]."
       </td><td>".$row["email"]."
-      </td><td>".$row["Seller_name"]."
-      </td><td><a href='Aboutseller.php'>Delete</a></td></tr>";
+      </td><td>".$row["Seller_name"]."</td></tr>";
     }
     echo "</table>";
    
@@ -61,7 +61,7 @@ else{
    
    
    </table>
-   <a href="../Admin_View/Sellerupdate.php">Add Seller</a>
+   
 
    <a href="../Admin_View/Admin_Homepage.php">Go Back</a>
     

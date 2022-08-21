@@ -42,7 +42,6 @@ $pass=$_REQUEST["pass"];
 $email=$_REQUEST["Email"];
 
 
-$mob_no=$_REQUEST["manager_num"];
 $cf=$_REQUEST["c_pass"];
 $manger_name=$_REQUEST["manager_name"];
 
@@ -162,22 +161,6 @@ else{
 }
 echo "<br>";
 
-if(strlen($mob_no)>=11 && !empty($mob_no)){
-    echo "Valid Mobile Number";
-    echo "<br>";
-    $validmob=$mob_no;
-    $x++;
-    echo "Mobile Number : " . $validmob;
-}
-else if(!empty($mob_no=="+88")){
-    $invalidmob="Phone Number cannot start with +88";
-    echo "<br>";       
-}
-else{
-    $invalidmob="Mobile Number is not valid";
-    echo "<br>";
-}
-echo "<br>";
 
 
 if(empty($manger_name)){
@@ -221,10 +204,10 @@ else{
 // }
 
 //registration using mysql database
-if($x==9){
+if($x==8){
     $mydb=new managerdb();
     $myconn=$mydb->opencon();
-    $result=$mydb->insertmanager($validfname,$validlname,$validage,$_REQUEST["g1"],$validmob,$validateemail,$validman,$validpass,$validcf,"manager_reg",$myconn);
+    $result=$mydb->insertmanager($validfname,$validlname,$validage,$_REQUEST["g1"],$validateemail,$validman,$validpass,$validcf,"manager_reg",$myconn);
    
 }
 else{

@@ -10,7 +10,7 @@ include ("../Admin_control/Manager.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manager Registration Page</title>
-    <link rel="stylesheet" href="../Admin_CSS/style1.css">
+    <link rel="stylesheet" href="../Admin_CSS/maanreg.css">
     
 
 </head>
@@ -24,10 +24,11 @@ include ("../Admin_control/Manager.php");
         </div>
 
     
-        
+        <div class="forms">
         <form action="" method="POST"  enctype="multipart/form-data">
-            <fieldset>
+        <div class="regdetails">
                 <legend>Registration Details:</legend>
+</div>
             <table>
                 <tr> 
                 <td>First Name: </td>
@@ -54,13 +55,7 @@ include ("../Admin_control/Manager.php");
         </td>
     </tr>
     
-    <tr>
-        <td>Mobile No:</td>
-        <td>
-            <input type="tel" name="manager_num" placeholder="Enter your Phone Number?">
-         <?php echo $invalidmob; ?>
-        </td>
-    </tr>
+   
 
 
         <tr><td>E-mail: </td>
@@ -73,11 +68,10 @@ include ("../Admin_control/Manager.php");
     
 </table>
 
-        
-    </fieldset>
-    <fieldset>
+<div class="regdetails">
+   
         <legend>Important Informations</legend>
-
+</div>
         <table>
 
         <tr>
@@ -106,15 +100,19 @@ include ("../Admin_control/Manager.php");
         
 
        
-       <tr><td> <input type="submit" name="Submission" value="Submit"> <input type= "reset" name="Res" value = Reset></td></tr>
-               
+       <tr><td> 
+        <input type="submit" name="Submission" value="Add" class="button button1">
+         <input type= "reset" name="Res" value = "Reset" class="button button2">
+    </td></tr>
+</div>
             </table>
 
         </form>
         
 
         </table>
-</fieldset>
+
+
 
 
 <h4>Go To <a href="../Admin_View/Aboutmanager.php">Manager Page</a></h4>

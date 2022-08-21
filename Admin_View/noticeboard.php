@@ -1,5 +1,6 @@
 <?php
 include("../Admin_control/notice.php");
+include("../Admin_control/deletenotice.php");
 ?>
 <html >
 
@@ -9,25 +10,30 @@ include("../Admin_control/notice.php");
 </head>
 
 <body>
+    <div class="header">
     <h1>Notice Post Section</h1>
-    <div class="body">
+</div>
+<div class="forms">
         <form action="" method="post">
          
                 <tr>
-                    <td>Serial No:</td>
+                    <td><p>Serial No:</p></td>
                     <td>
-                        <input type="number" name="serial">
+                        <input type="number" name="serial" id="ser">
                     </td>
                     <br><br>
                     <p><label >Notice for Star Cineplex :</label></p>
                     <td><textarea name="notice" id="nnotice" cols="50" rows="10" placeholder="Write notice here"
                             ></textarea></td>
                     <br><br>
-                    <td>Date:</td>
+                    <td><p>Date:</p></td>
                     <td><input type="date" name="noticedate"></td>
                     <br><br>
-                    <td><input type="submit" name="submit" value="Post Notice"></td>
-                    <td><input type="submit" name="show" value="Show my notices"></td>
+                    <td><input type="submit" name="submit" value="Post Notice"  class="button button1"></td>
+                    <td><input type="submit" name="show" value="Show my notices" class="button button2"></td>
+                    <br><br><br>
+                    <td>Enter Serial:<input type="number" name="del" ></td>
+                    <td><input type="submit" name="delete" value="Delete Notice" class="button button3"></td>
                     <td>
                         <a href="Updatenotice.php">Update Notice</a>
                     </td>
@@ -76,5 +82,5 @@ if(isset($_REQUEST["show"])){
            
 
 </body>
-
+</div>
 </html>

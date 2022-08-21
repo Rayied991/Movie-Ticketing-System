@@ -31,11 +31,19 @@ function insertuser($fname,$lname,$gender,$mob_no,$email,$address,$password,$tab
                 $sqlstr="SELECT * FROM $tablename WHERE email='$email'";
                 return $conn->query($sqlstr);
             }
-            //delete data
-            function Deleteadmin($conn,$tablename,$email){
-                    $sqlstr="DELETE FROM $tablename WHERE email='$email'";
-                    $res=$conn->query($sqlstr);
-                    
+            function deleteuser($email,$table,$conn){
+               
+                $sqlstr="DELETE FROM $table WHERE email='$email'";
+                $res= $conn->query($sqlstr);
+                if($res==true){
+                    echo "Record deleted successfully";
+                }
+                else{
+                    echo "cannot delete Because of the error =".$conn->error;//error debug using this property
                 }
             }
+               
+            }
+            
+            
 ?>

@@ -1,5 +1,7 @@
 <?php
 
+include ("../user_model/db.php");
+
 if(!isset($_SESSION))
 {
     session_start();
@@ -9,21 +11,23 @@ $invalid_username="";
 $invalid_password="";
 $valid_username="";
 $valid_password="";
+$x=0;
 
     if($_SERVER["REQUEST_METHOD"]=="POST")
     {
         if(isset($_REQUEST['submit']))
         {
-            $username=$_REQUEST["user_name"];
+            $username=$_REQUEST["email"];
             $password=$_REQUEST["password"];
     
             if(empty($username))
             {
-                $invalid_username= "*you must enter username";
+                $invalid_username= "*you must enter email";
             }
             else
             {
                $valid_username=$username;
+                $x++;
             }
             if(empty($password))
             {
@@ -37,38 +41,28 @@ $valid_password="";
             else
             {
                 $valid_password=$password;
+                $x++;
             }
            
         }
 
-        //login using json
-        $login_data=file_get_contents("../user_data/reg_user_data.json");
-        $fetch_login_data=json_decode($login_data);
+     if($x==2)
+     {
+       $mydb=new db();
+       $conn=$mydb->opencon();
 
-        foreach($fetch_login_data as $login_data)
+        $login=$mydb->login($conn,"reg",$valid_username,$valid_password);
+        if($login->num_rows>0)
         {
-            if($login_data->set_user==$valid_username && $login_data->set_pass==$valid_password)
-            {
-                $_SESSION["user_name"]=$valid_username;
-                $_SESSION["password"]=$valid_password;
-                header("location:../user_view/homepage.php");
-            }
-            else
-            {
-                if(empty($username))
-                {
-                    $invalid_username= "*you must enter username";
-                }
-               else
-               {
-                $invalid_username= "*Invalid username or password";
-               }
-            }
+            $_SESSION['username']=$valid_username;
+            header("location:../user_view/homepage.php");
         }
-  
+        else
+        {
+            $invalid_username="*invalid username or password";
+        }
+     }
 
     }
-
       
-
 ?>

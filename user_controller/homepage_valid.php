@@ -1,77 +1,46 @@
 <?php
-
-$invalid_customer_name="";
-$valid_customer_name="";
-
-$invalid_hall="";
-$valid_hall="";
-
-// $hall = $_POST["hall"];
-$invalid_clock ="";
-$valid_clock="";
+include '../user_model/db.php';
 
 
-if($_SERVER["REQUEST_METHOD"] =="POST")
-{
-$customer_name = $_POST["Customers_nam"];
+if($_SERVER['REQUEST_METHOD']=='POST'){
 
+    if(isset($_REQUEST['book']))
+    {
+    $movie_name=$_POST['mname'];
+    $movie_date=$_POST['mdate'];    
+    $movie_email=$_POST['email'];
+    $vanue=$_POST['mvanue'];
+   
+    $obj=new db();
+    $conn=$obj->opencon();
+    $tablename="booking";
 
-if(empty($customer_name)  || is_numeric($customer_name))
-{
-    $invalid_customer_name="Enter customers Name";
+    $check_email=$conn->query("SELECT email FROM $tablename WHERE email='$movie_email'");
+
+    if($check_email->num_rows>0)
+    {
+        echo "<h4>You have already a booking</h4>";
+    }
+    else
+    {
+        if(empty($movie_name) || empty($movie_date) || empty($movie_email) || empty($vanue))
+        {
+            echo "<p>Please fill all the fields</p>";
+        }
+        else
+        {
+            $obj=new db();
+            $conn=$obj->opencon();
+            $obj->bookmovie($conn,'booking',$movie_name,$movie_date,$movie_email,$vanue);
+            echo "<h3>Booking Successful</h3>";    
+        }
+       
 }
-else
-{
-    $valid_customer_name= $customer_name;
-    echo "Customers Name : " . $customer_name;
-}
-echo"<br>";
-
-echo"Ticket No : ";
-echo(rand(100,300));
-echo"<br>";
-
-if(isset($_POST["movie"]))
-{
-    echo"Movie Name : " . $_POST["movie"];
-    echo"<br>";
-}
-else
-{
-    echo"Please select a Movie<br>";
-}
-
-$_POST["clock"] = isset($_POST['clock']) ? "Movie Time : " . $_POST["clock"] : "Select Movie Time";
-echo $_POST["clock"];
-
-echo"<br>";
-
-if(isset($_POST["hall"]))
-{
-
-
-    if ($_POST['hall']=== 'Hall X') {
-
-        echo 'Hall Name : X<br>';
-  
-      }
-      else if ($_POST['hall']=== 'Hall Z') {
-
-        echo 'Hall Name : Y<br>';
-  
-      }
-}
-else
-{
-$invalid_hall= "<br>select radio a Button.";
+    }
+        
+        
 }
 
-echo"Seat No : ";
-echo(rand(1,30));
-echo"<br>";
-
-echo"<br>";
 
 
-}
 ?>

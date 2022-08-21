@@ -50,9 +50,20 @@ return $conn;
                     echo "cannot update Because of the error =".$conn->error;//error debug using this property
                 }
             }
-           
-         
+
+        function deletenotice($serial,$table,$conn){
+                $sqlstr="DELETE FROM $table WHERE Serial='$serial'";
+                $res= $conn->query($sqlstr);
+                $checkprimary=$conn->query("SELECT Serial FROM noticedb WHERE Serial='$serial'");
+    if($checkprimary->num_rows>0){
+        if($res==true){
+            echo "Record deleted successfully";
+        } 
     }
-
-
+    else{
+        echo "No record founds";
+    
+    }
+            }
+    }
 ?>

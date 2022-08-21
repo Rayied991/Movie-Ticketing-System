@@ -1,9 +1,17 @@
 
-
+<?php
+include("../Admin_control/deluser.php");
+?>
 <html>
     <title>User Informations</title>
+    <head>
+        <link rel="stylesheet" href="../Admin_CSS/user.css">
+    </head>
     <body>
-        <h1>User Informations</h1>
+        <div class="header">
+
+            <h1>User Informations</h1>
+        </div>
         <form action="" method="POST">
         <table border="2">
             <tr>
@@ -13,7 +21,7 @@
                 <th>Mobile No</th>
                 <th> Email</th>
                 <th>Address</th>
-                <th>Source</th>
+               
             </tr>
             <?php
    $servername="localhost";
@@ -38,8 +46,7 @@
                   </td><td>".$row["gender"]."
                   </td><td>".$row["mob"]."</td><td>"
                   .$row["email"]."</td><td>"
-                  .$row["address"]."
-                  </td><td><a href='AboutUser.php'>Delete</a></td></tr>";
+                  .$row["address"]."</td></tr>";
                 }
                 echo "</table>";
                
@@ -52,8 +59,13 @@
 
             ?>
         </table>
+        <br>
+        <input type="email" name="inputdt">
+        <input type="submit" name="delbtn" Value="Delete user" class="button b1">
+        <h4> <a href="Admin_Homepage.php">Home Page</a></h4>
         </form>
-        <h4>Go To <a href="Admin_Homepage.php">Home Page</a></h4>
+        
+        
     </body>
 
 </html>

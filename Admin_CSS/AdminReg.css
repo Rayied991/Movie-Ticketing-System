@@ -68,6 +68,7 @@ label,legend,h4{
 a{
     text-decoration: none;
     color: red;
+    
    
 }
 .button2:hover {
@@ -80,3 +81,8 @@ a{
    background-color: blue;
    transform: rotate(360deg);
   }
+h1,p,label{
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+    color: black  ;
+}

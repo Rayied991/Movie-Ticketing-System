@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../user_css/about.css">
 </head>
 <body bgcolor="#BBD0F9">
     <h1 align="center">Star Cineplex</h1>
@@ -16,8 +17,20 @@ We're working to turn our passion for customers into a booming online store. We 
 Sincerely,
 [Asif Zaman]
 
+
 </p>
     </fieldset>
     <p align="center">copyright Ⓒ 1999 by star cineplex authority </p>
+    
+    <div id="show">
+    <button class="butt" id="butt" onclick="loadDoc()">Contributors</button>
+    </div>
+   
+    <a align="center" href="homepage.php">Homepage</a>
+
+    <script src=" ../user_js/about.js "></script>
+    
 </body>
+
+
 </html>
