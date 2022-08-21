@@ -5,6 +5,19 @@ div.topnav{
     background-color:rgb(62, 17, 62) ;
     
 }
+div.header h2{
+  padding: 18px;
+  background-color: #4CAF50;
+  color: black;
+  border-left: 10px solid red ;
+  border-right: 10px solid red;
+  font-family: "Times New Roman", Times, serif;
+}
+.h2{
+    font-size: 20px;
+    font-family: "Times New Roman", Times, serif;
+    background-color: #ddd;
+}
 .topnav {
     
     overflow: hidden;

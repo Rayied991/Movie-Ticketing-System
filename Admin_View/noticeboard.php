@@ -5,6 +5,7 @@ include("../Admin_control/notice.php");
 
 <head>
     <title>Post Notice</title>
+    <link rel="stylesheet" href="../Admin_CSS/noticeboard.css">
 </head>
 
 <body>
@@ -18,13 +19,18 @@ include("../Admin_control/notice.php");
                         <input type="number" name="serial">
                     </td>
                     <br><br>
+                    <p><label >Notice for Star Cineplex :</label></p>
                     <td><textarea name="notice" id="nnotice" cols="50" rows="10" placeholder="Write notice here"
                             ></textarea></td>
                     <br><br>
+                    <td>Date:</td>
                     <td><input type="date" name="noticedate"></td>
                     <br><br>
                     <td><input type="submit" name="submit" value="Post Notice"></td>
                     <td><input type="submit" name="show" value="Show my notices"></td>
+                    <td>
+                        <a href="Updatenotice.php">Update Notice</a>
+                    </td>
                     
                 </tr>
                 <?php

@@ -1,30 +1,29 @@
 
 <html>
-    <title>Admin Info</title>
+    <title>Seller Info</title>
     <head>
-        <link rel="stylesheet" href="../Admin_CSS/Aboutadmin.css">
+        <!-- <link rel="stylesheet" href="../Admin_CSS/.css"> -->
     </head>
     <body>
-    <h1>Admin Informations</h1>
+    <h1>Seller Informations</h1>
         <form action="" method="POST">
-       
+      
    <table border="2">
     <tr>
-        <th>Id</th>
         <th>First Name</th>
         <th>Last Name</th>
-        <th>Age</th>
         <th>Gender</th>
-        <th>Mobile No</th>
+        <th>Address</th>
         <th>Email</th>
-        <th>Admin Name</th>
+        <th>Seller Name</th>
+        <th>Source</th>
     </tr>
     <?php
        $servername="localhost";
        $username="root";
        $password="";
        $dbname="web_project";
-       $tablename="admin_registration";
+       $tablename="seller_reg";
        //create connection
 $conn=new mysqli($servername,$username,$password,$dbname);
 
@@ -33,11 +32,17 @@ if($conn->connect_error){
    echo "error connecting database";
 }
 
-$sql="SELECT id,fname,lname,age,gender,mob_no,email,admin_name FROM $tablename ";
+$sql="SELECT Seller_fname,Seller_lname,Gender,address,email,Seller_name FROM $tablename ";
 $result=$conn->query($sql);
 if($result->num_rows>0){
     while($row=$result->fetch_assoc()){
-      echo "<tr><td>".$row["id"]."</td><td>".$row["fname"]."</td><td>".$row["lname"]."</td><td>".$row["age"]."</td><td>".$row["gender"]."</td><td>".$row["mob_no"]."</td><td>".$row["email"]."</td><td>".$row["admin_name"]."</td></tr>";
+      echo "<tr><td>".$row["Seller_fname"]."
+      </td><td>".$row["Seller_lname"]."
+      </td><td>".$row["Gender"]."
+      </td><td>".$row["address"]."
+      </td><td>".$row["email"]."
+      </td><td>".$row["Seller_name"]."
+      </td><td><a href='Aboutseller.php'>Delete</a></td></tr>";
     }
     echo "</table>";
    
@@ -56,6 +61,7 @@ else{
    
    
    </table>
+   <a href="../Admin_View/Sellerupdate.php">Add Seller</a>
 
    <a href="../Admin_View/Admin_Homepage.php">Go Back</a>
     

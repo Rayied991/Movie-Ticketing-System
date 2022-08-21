@@ -23,6 +23,7 @@ include("../Admin_control/Admin_Registration_Validation.php");
             <table>
             
                 <tr> 
+                   
                 <td>First Name: </td>
                 <td><input type= "text" name="fname" id="name1" onkeyup="fnamecheck()" placeholder="Enter your First Name?">
 

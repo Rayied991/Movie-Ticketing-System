@@ -3,7 +3,7 @@
 <html>
     <title>User Informations</title>
     <body>
-        <h1>User Information</h1>
+        <h1>User Informations</h1>
         <form action="" method="POST">
         <table border="2">
             <tr>
@@ -13,6 +13,7 @@
                 <th>Mobile No</th>
                 <th> Email</th>
                 <th>Address</th>
+                <th>Source</th>
             </tr>
             <?php
    $servername="localhost";
@@ -32,7 +33,13 @@
              $result=$conn->query($sql);
              if($result->num_rows>0){
                 while($row=$result->fetch_assoc()){
-                  echo "<tr><td>".$row["fname"]."</td><td>".$row["lname"]."</td><td>".$row["gender"]."</td><td>".$row["mob"]."</td><td>".$row["email"]."</td><td>".$row["address"]."</td></tr>";
+                  echo "<tr><td>".$row["fname"]."
+                  </td><td>".$row["lname"]."
+                  </td><td>".$row["gender"]."
+                  </td><td>".$row["mob"]."</td><td>"
+                  .$row["email"]."</td><td>"
+                  .$row["address"]."
+                  </td><td><a href='AboutUser.php'>Delete</a></td></tr>";
                 }
                 echo "</table>";
                

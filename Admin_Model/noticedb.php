@@ -41,6 +41,16 @@ return $conn;
                 
                 }
             }
+            function updatenotice($serial,$notice,$date,$table,$conn){
+                $sqlstr="UPDATE $table SET Notice='$notice',Date='$date' WHERE Serial='$serial'";
+                if($conn->query($sqlstr)){
+                    echo "Record updated successfully";
+                }
+                else{
+                    echo "cannot update Because of the error =".$conn->error;//error debug using this property
+                }
+            }
+           
          
     }
 

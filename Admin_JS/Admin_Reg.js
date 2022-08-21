@@ -99,13 +99,11 @@ function checkemail() {
   if(emailval.match(email_regex) || emailval.match(email_regex_aiub)){
     document.getElementById("emailerror").innerHTML="Email is correct";
     return true;
-
   }
   else if(emailval==""){
     document.getElementById("emailerror").innerHTML="Email cannot be empty";
     return false;
   }
-
   else{
     document.getElementById("emailerror").innerHTML="Email is not correct";
     return false;
@@ -169,14 +167,11 @@ function checkconpass() {
 function checkfile() {
   var file_regex =/^.*\.(jpg|jpeg|png|gif)$/;
   var fileval=document.getElementById("f1").value;
-  if(fileval.match(file_regex) && fileval!=""){
+  if(fileval.match(file_regex) ){
     document.getElementById("fileerror").innerHTML="File is correct";
     return true;
   }
-  else if(fileval==""){
-    document.getElementById("fileerror").innerHTML="File cannot be empty";
-    return false;
-  }
+
   else{
     document.getElementById("fileerror").innerHTML="File is not correct";
     return false;
@@ -217,6 +212,7 @@ function myAJAXname(){
 
 
 
+
 //jquery
 
 $(document).ready(function(){
@@ -248,3 +244,4 @@ $(document).ready(function(){
     }
   });
 });
+

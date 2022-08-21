@@ -17,6 +17,7 @@ if(isset($_SESSION["admin_name"]))
         <link rel="stylesheet" href="../Admin_CSS/AdminLogin.css">
     </head>
     <body>
+        
     <div class="header">
         <h1>Admin Login Page</h1>
     </div>
@@ -28,7 +29,8 @@ if(isset($_SESSION["admin_name"]))
             <table>
                 <tr>
                     <td>Admin name</td>
-                    <td><input type="text" name="admin_name" id="admin_id" onkeyup="adminnameval()" placeholder="Enter your Adminname" value="<?php if(isset($_COOKIE["admin_name"])) { echo $_COOKIE["admin_name"]; } ?>">
+                    <h5>Suggestions: <span id="txtHint"></span></h5>
+                    <td><input type="text" name="admin_name" id="admin_id" onkeyup="adminnameval() && showHint(this.value) " placeholder="Enter your Adminname" value="<?php if(isset($_COOKIE["admin_name"])) { echo $_COOKIE["admin_name"]; } ?>">
                     <p id="adminerror"></p> 
 </td>
 </tr>
@@ -62,5 +64,6 @@ if(isset($_SESSION["admin_name"]))
         </fieldset>
         <h4>Don't Have an Account, <a href="Admin_Registration.php">Register here</a></h4>
         <script src="../Admin_JS/Login.js"></script>
+        <script src="../Admin_JS/ajax.js"></script>
     </body>
 </html>

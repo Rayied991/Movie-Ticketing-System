@@ -10,7 +10,6 @@ $validcf="";
 
 $x=0;
 $pass_regex = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/"; 
-$email_regex_aiub="/^\w+([-+.']\w+)*@[A-Za-z\d]+\.aiub.edu$/";
 if(isset($_REQUEST["save_pass"])){
    $id=$_REQUEST["Ad_id"];
     $pass=$_REQUEST['ad_new_pass'];
