@@ -34,7 +34,7 @@ if(isset($_POST['submit']))
 {
     $fname=$_REQUEST['f_name'];
     $lname=$_REQUEST['l_name'];
-    $gender=$_POST['gender'];
+    // $gender=$_POST['gender'];
 
     $mobile=$_REQUEST['mobile'];
     $email=$_REQUEST['email'];
@@ -71,16 +71,16 @@ if(isset($_POST['submit']))
         $x++;
     }
     //gender
-    if(isset($_POST["gender"]))
+    if(isset($_REQUEST["gender"]))
     {
     
-        $valid_gender= $_POST["gender"];
+        $valid_gender= $_REQUEST["gender"];
         $x++;
     }
     
     //if gender not selected
 
-    else if(empty($_POST['gender']))
+    else if(empty($_REQUEST['gender']))
     {
        echo "<br>";
     }
@@ -206,7 +206,7 @@ if(isset($_POST['submit']))
     $mydb=new db();
     $myconn=$mydb->opencon();
     
-    $mydb->insertuserreg($fname,$lname,$gender,$mobile,$email,$address,$set_pass,"reg",$myconn);
+    $mydb->insertuserreg($fname,$lname,$_REQUEST['gender'],$mobile,$email,$address,$set_pass,"reg",$myconn);
  }
  else
  {

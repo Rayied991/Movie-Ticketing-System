@@ -29,7 +29,9 @@ include("../manager_controller/ticketprocess.php");
     <p><a href="#">Book Ticket</a>
      | <a href="https://www.facebook.com/rubaba.rahman.319/">Contact with manager</a>
      |<a href="../manager_view/updateview.php">Update Hall</a>
+     |<a href="../manager_view/ajax.php">Employee info</a>
     | <a href="../manager_view/loginview.php">Logout</a>
+    
     
  </p>
  </fieldset>

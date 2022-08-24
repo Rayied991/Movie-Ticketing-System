@@ -12,7 +12,7 @@ $pass_reg = "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,
 if(isset($_REQUEST["save_pass"])){
     $pass=$_REQUEST['mn_new_pass'];
     $cf=$_REQUEST['con_pass'];
-    $admin_name=$_REQUEST["mn_name"];
+    $manager_name=$_REQUEST["mn_name"];
 
     if(empty($_REQUEST['mn_name'])){
         $invalid_managername="Please enter your manager_name";
